@@ -123,5 +123,5 @@ Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE.md) pour plus
 
 Si vous avez des suggestions ou des améliorations pour ce projet, n'hésitez pas à soumettre une demande de pull ou à ouvrir une issue.
 
-Cette documentation `README.md` offre une vue d'ensemble complète de l'application, incluant les étapes d'installation, de configuration et d'exécution. Elle est adaptée pour des utilisateurs qui souhaitent utiliser ou contribuer au projet.
+Cette documentation offre une vue d'ensemble complète de l'application, incluant les étapes d'installation, de configuration et d'exécution. Elle est adaptée pour des utilisateurs qui souhaitent utiliser ou contribuer au projet.
 
