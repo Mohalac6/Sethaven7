@@ -1,4 +1,3 @@
-import socket
 import traceback
 
 from flask import Flask, render_template, request, jsonify
@@ -71,7 +70,4 @@ def chat():
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    # Lance l'application Flask sur l'IP de l'hôte et le port 7777
-    HOST = socket.gethostbyname(socket.gethostname())
-    PORT = 7777  # Converti en entier pour la cohérence
-    app.run(debug=True, host=HOST, port=PORT)
+    app.run(debug=True, port='7777')
