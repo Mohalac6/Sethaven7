@@ -38,16 +38,88 @@ https://github.com/Mohalac6/Sethaven7.git
 
 2. Installez les dépendances Python requises dans votre environnement virtuel :
    
-   ```
-   cd Sethaven7
-   python -m venv env
-   source env/bin/activate  # Sous Windows: env\Scripts\activate
-   pip install -r requirements.txt
-   ```
+  ```
+  cd Sethaven7
+  python -m venv env
+  source env/bin/activate  # Sous Windows: env\Scripts\activate
+  pip install -r requirements.txt
+  ```
 
 4. Configurez le fichier .env avec vos informations de connexion à l'API Groq.
-
-
+  
+  ```
+  GROQ_API_KEY=your_api_key_here
+  GROQ_MODEL_ID=your_model_id
+  ```
 5. Installez les dépendances JavaScript si nécessaire (si vous utilisez des outils front-end comme npm ou Yarn) :
+   
+   ```node
+   npm install
+   ```
 
-npm install
+## Démarrage de l'application
+
+1. Démarrer le backend Flask :
+   
+   ```bash
+   python app.py
+   ```
+
+Le serveur démarrera sur http://192.154.183.30:7777.
+
+2. Accéder à l'application : Ouvrez votre navigateur et allez sur http://localhost:7777.
+
+
+## Structure du Projet
+
+- **app.py**: Le point d'entrée du serveur Flask et la configuration des routes pour l'API.
+
+- **config.py** : Configuration de l'API Groq et validation des variables d'environnement.
+
+- **static/** : Contient les fichiers CSS et JavaScript pour le front-end.
+
+- **templates/** : Contient le fichier HTML pour l'interface utilisateur.
+
+- **chatUI.js**, **chatHistory.js**, **aiService.js**, **app.js** : Modules JavaScript pour gérer l'interface de chat, l'historique et la communication avec l'API backend.
+
+
+## Exemple d'utilisation
+
+1. Tapez votre message dans le champ de saisie et cliquez sur "Envoyer" pour interagir avec le chatbot.
+
+
+2. L'IA répondra en temps réel, et l'historique de la conversation sera stocké.
+
+
+3. Vous pouvez accéder à l'historique dans la barre latérale et le supprimer si nécessaire.
+
+
+## Développement
+
+Pour le développement et les tests, assurez-vous d'activer le mode débogage dans Flask :
+
+  ```bash
+  export FLASK_ENV=development  # Sous Windows : set FLASK_ENV=development
+  ```
+
+Ensuite, lancez l'application en mode débogage :
+
+  ```bash
+   python app.py
+  ```
+
+## Auteurs
+
+Votre [Mohamed](https://github.com/Mohalac6)
+
+
+## Licence
+
+Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE.md) pour plus de détails.
+
+Remarques
+
+Si vous avez des suggestions ou des améliorations pour ce projet, n'hésitez pas à soumettre une demande de pull ou à ouvrir une issue.
+```
+Cette documentation `README.md` offre une vue d'ensemble complète de l'application, incluant les étapes d'installation, de configuration et d'exécution. Elle est adaptée pour des utilisateurs qui souhaitent utiliser ou contribuer au projet.
+```
