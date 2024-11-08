@@ -1,47 +1,49 @@
 import socket
 import traceback
+
 from flask import Flask, render_template, request, jsonify
 from groq import Groq
+
 from config import Config
 
 app = Flask(__name__)
 
-# Initialize Groq client with the provided API key
+# Initialise le client Groq avec la clé API fournie
 client = Groq(api_key=Config.API_KEY)
 
 @app.route('/')
 def index():
     """
-    Renders the index page for the web application.
+    Affiche la page d'accueil de l'application web.
     """
     return render_template('index.html')
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
     """
-    Handles the chat requests from the front-end, processes user messages,
-    and returns a chatbot response using the Groq API.
+    Gère les requêtes de chat provenant du front-end, traite les messages de l'utilisateur
+    et retourne une réponse du chatbot via l'API Groq.
     
-    Returns:
-        - A JSON response with the bot's message and completion time if successful.
-        - A 400 error response if the request format is invalid.
-        - A 500 error response if there is a server-side error.
+    Retourne :
+        - Une réponse JSON contenant le message du bot et le temps de réponse si la requête réussit.
+        - Une réponse d'erreur 400 si le format de la requête est invalide.
+        - Une réponse d'erreur 500 en cas d'erreur côté serveur.
     """
     try:
-        # Parse the incoming JSON data
+        # Analyse les données JSON reçues
         data = request.get_json()
         
-        # Validate the incoming data
+        # Valide les données entrantes
         if not data or 'messages' not in data:
-            raise ValueError("The requested form is empty")
+            raise ValueError("Le formulaire de la requête est vide")
     
     except Exception as e:
-        # Log the error traceback for debugging purposes
+        # Affiche la trace de l'erreur pour faciliter le débogage
         traceback.print_exc()
-        return jsonify({'error': 'Invalid request format'}), 400
+        return jsonify({'error': 'Format de requête invalide'}), 400
 
     try:
-        # Send a request to the Groq API for chat completion
+        # Envoie une requête à l'API Groq pour obtenir une réponse de chat
         chat_response = client.chat.completions.create(
             messages=data['messages'],
             model=Config.MODEL_ID,
@@ -52,25 +54,24 @@ def chat():
             stream=False
         )
 
-        # Extract the message content and completion time from the API response
+        # Extrait le contenu du message et le temps de réponse depuis la réponse de l'API
         message_content = chat_response.choices[0].message.content
         completion_time = chat_response.usage.completion_time
 
-        # Return the bot's message and the completion time as a JSON response
+        # Retourne le message du bot et le temps de réponse sous forme de réponse JSON
         return jsonify({
             'message': message_content,
             'completion_time': completion_time
         })
 
     except Exception as e:
-        # Log the error message and traceback for debugging
-        print(f"Error: {str(e)}")
+        # Affiche le message d'erreur et la trace pour faciliter le débogage
+        print(f"Erreur : {str(e)}")
         traceback.print_exc()
         return jsonify({'error': str(e)}), 500
 
 if __name__ == '__main__':
-    # Run the Flask app on the host's IP and port 7777
+    # Lance l'application Flask sur l'IP de l'hôte et le port 7777
     HOST = socket.gethostbyname(socket.gethostname())
-    PORT = 7777  # Changed to integer for consistency
+    PORT = 7777  # Converti en entier pour la cohérence
     app.run(debug=True, host=HOST, port=PORT)
-
