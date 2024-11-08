@@ -55,12 +55,10 @@ def chat():
 
         # Extrait le contenu du message et le temps de réponse depuis la réponse de l'API
         message_content = chat_response.choices[0].message.content
-        completion_time = chat_response.usage.completion_time
 
         # Retourne le message du bot et le temps de réponse sous forme de réponse JSON
         return jsonify({
-            'message': message_content,
-            'completion_time': completion_time
+            'message': message_content
         })
 
     except Exception as e:
