@@ -31,26 +31,27 @@ Pour exécuter cette application en local, vous devez disposer de :
 
 1. Clonez le dépôt du projet :
 
- ```bash
- git clone
-https://github.com/Mohalac6/Sethaven7.git
- ```
+   ```bash
+   git clone
+   https://github.com/Mohalac6/Sethaven7.git
+   ```
 
 2. Installez les dépendances Python requises dans votre environnement virtuel :
-   
-  ```
-  cd Sethaven7
-  python -m venv env
-  source env/bin/activate  # Sous Windows: env\Scripts\activate
-  pip install -r requirements.txt
-  ```
+
+   ```
+   cd Sethaven7
+   python -m venv env
+   source env/bin/activate
+   env\Scripts\activate # Sous Windows
+   pip install -r requirements.txt
+   ```
 
 4. Configurez le fichier .env avec vos informations de connexion à l'API Groq.
-  
-  ```
-  GROQ_API_KEY=your_api_key_here
-  GROQ_MODEL_ID=your_model_id
-  ```
+
+   ```
+   GROQ_API_KEY=your_api_key_here
+   GROQ_MODEL_ID=your_model_id
+   ```
 5. Installez les dépendances JavaScript si nécessaire (si vous utilisez des outils front-end comme npm ou Yarn) :
    
    ```node
@@ -60,12 +61,12 @@ https://github.com/Mohalac6/Sethaven7.git
 ## Démarrage de l'application
 
 1. Démarrer le backend Flask :
-   
+
    ```bash
    python app.py
    ```
 
-Le serveur démarrera sur http://192.154.183.30:7777.
+   Le serveur démarrera sur http://localhost:7777
 
 2. Accéder à l'application : Ouvrez votre navigateur et allez sur http://localhost:7777.
 
@@ -110,7 +111,7 @@ Ensuite, lancez l'application en mode débogage :
 
 ## Auteurs
 
-Votre [Mohamed](https://github.com/Mohalac6)
+[Mohamed](https://github.com/Mohalac6)
 
 
 ## Licence
@@ -120,6 +121,6 @@ Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE.md) pour plus
 Remarques
 
 Si vous avez des suggestions ou des améliorations pour ce projet, n'hésitez pas à soumettre une demande de pull ou à ouvrir une issue.
-```
+`
 Cette documentation `README.md` offre une vue d'ensemble complète de l'application, incluant les étapes d'installation, de configuration et d'exécution. Elle est adaptée pour des utilisateurs qui souhaitent utiliser ou contribuer au projet.
-```
+`
