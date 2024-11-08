@@ -3,13 +3,13 @@ import { ChatHistory } from './chatHistory.js';
 import { AIService } from './aiService.js';
 
 /**
- * Main App class to initialize and handle the chatbot application.
- * Manages UI interactions, event listeners, and communication with AIService.
+ * Classe principale App pour initialiser et gérer l'application chatbot.
+ * Gère les interactions de l'interface utilisateur, les écouteurs d'événements et la communication avec AIService.
  */
 class App {
     /**
-     * Initializes the App with ChatUI, ChatHistory, and AIService instances.
-     * Sets up event listeners and loads chat history.
+     * Initialise l'App avec les instances de ChatUI, ChatHistory et AIService.
+     * Configure les écouteurs d'événements et charge l'historique des chats.
      */
     constructor() {
         this.chatUI = new ChatUI();
@@ -23,7 +23,7 @@ class App {
     }
 
     /**
-     * Sets up event listeners for UI interactions.
+     * Configure les écouteurs d'événements pour les interactions de l'interface utilisateur.
      */
     setupEventListeners() {
         document.getElementById('chat-form').addEventListener('submit', this.handleSubmit.bind(this));
@@ -34,16 +34,16 @@ class App {
     }
 
     /**
-     * Handles form submission for sending a message.
-     * @param {Event} event - The form submit event.
+     * Gère la soumission du formulaire pour envoyer un message.
+     * @param {Event} event - L'événement de soumission du formulaire.
      */
     async handleSubmit(event) {
         event.preventDefault();
         const userInput = this.chatUI.getUserInput();
 
-        // Check if the input is empty before sending
+        // Vérifie si l'entrée utilisateur est vide avant l'envoi
         if (!userInput) {
-            console.warn("The user input is empty");
+            console.warn("L'entrée utilisateur est vide");
             return;
         }
 
@@ -51,21 +51,21 @@ class App {
         this.chatUI.clearInput();
 
         try {
-            // Fetch bot response and update UI
+            // Récupère la réponse du bot et met à jour l'interface utilisateur
             const botResponse = await this.aiService.getBotResponse(userInput);
             this.chatUI.addMessage(botResponse, 'bot');
 
-            // Save conversation to chat history
+            // Enregistre la conversation dans l'historique des chats
             this.chatHistory.addChat(userInput, botResponse);
             this.updateChatHistoryUI();
         } catch (error) {
-            console.error("Error getting bot response:", error);
-            this.chatUI.addMessage("Error: Unable to get a response. Please try again.", 'bot');
+            console.error("Erreur lors de l'obtention de la réponse du bot :", error);
+            this.chatUI.addMessage("Erreur : Impossible d'obtenir une réponse. Veuillez réessayer.", 'bot');
         }
     }
 
     /**
-     * Starts a new chat by clearing messages and closing the sidebar.
+     * Démarre une nouvelle conversation en effaçant les messages et en fermant la barre latérale.
      */
     startNewChat() {
         this.chatUI.clearMessages();
@@ -73,7 +73,7 @@ class App {
     }
 
     /**
-     * Clears the chat history and updates the UI.
+     * Efface l'historique des chats et met à jour l'interface utilisateur.
      */
     clearHistory() {
         this.chatHistory.clearHistory();
@@ -82,7 +82,7 @@ class App {
     }
 
     /**
-     * Loads chat history from local storage and populates the chat UI.
+     * Charge l'historique des chats depuis le stockage local et peuple l'interface utilisateur.
      */
     loadChatHistory() {
         const history = this.chatHistory.getHistory();
@@ -94,7 +94,7 @@ class App {
     }
 
     /**
-     * Updates the chat history UI with the current history.
+     * Met à jour l'interface utilisateur de l'historique des chats avec l'historique actuel.
      */
     updateChatHistoryUI() {
         const historyContainer = document.querySelector('.chat-history');
@@ -112,13 +112,13 @@ class App {
             historyContainer.appendChild(chatItem);
         });
 
-        // Reinitialize Lucide icons after updating the DOM
+        // Réinitialise les icônes Lucide après la mise à jour du DOM
         lucide.createIcons();
     }
 
     /**
-     * Loads a specific chat from history into the chat UI.
-     * @param {Object} chat - The chat object to load.
+     * Charge un chat spécifique de l'historique dans l'interface utilisateur du chat.
+     * @param {Object} chat - L'objet de chat à charger.
      */
     loadChat(chat) {
         this.chatUI.clearMessages();
@@ -128,7 +128,7 @@ class App {
     }
 
     /**
-     * Toggles the sidebar visibility.
+     * Bascule la visibilité de la barre latérale.
      */
     toggleSidebar() {
         this.sidebar.classList.toggle('open');
@@ -136,7 +136,7 @@ class App {
     }
 
     /**
-     * Closes the sidebar.
+     * Ferme la barre latérale.
      */
     closeSidebar() {
         this.sidebar.classList.remove('open');
@@ -144,7 +144,7 @@ class App {
     }
 }
 
-// Initialize the App when the DOM is fully loaded
+// Initialise l'App lorsque le DOM est complètement chargé
 document.addEventListener('DOMContentLoaded', () => {
     new App();
     lucide.createIcons();
