@@ -18,3 +18,11 @@ Pour exécuter cette application en local, vous devez disposer de :
 - **Git** (pour le contrôle de version)
 - **Modules Python** : Flask, dotenv (pour gérer les variables d'environnement)
 - **Connexion à l'API Groq** avec un fichier `.env` contenant les informations suivantes :
+  ```
+  GROQ_API_KEY=your_api_key_here
+  GROQ_MODEL_ID=your_model_id
+  
+  MAX_TOKENS=1000
+  TEMPERATURE=0.5
+  TOP_P=1
+  ```
