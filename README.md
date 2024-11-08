@@ -26,3 +26,28 @@ Pour exécuter cette application en local, vous devez disposer de :
   TEMPERATURE=0.5
   TOP_P=1
   ```
+
+## Installation
+
+1. Clonez le dépôt du projet :
+
+ ```bash
+ git clone
+https://github.com/Mohalac6/Sethaven7.git
+ ```
+
+2. Installez les dépendances Python requises dans votre environnement virtuel :
+   
+   ```
+   cd Sethaven7
+   python -m venv env
+   source env/bin/activate  # Sous Windows: env\Scripts\activate
+   pip install -r requirements.txt
+   ```
+
+4. Configurez le fichier .env avec vos informations de connexion à l'API Groq.
+
+
+5. Installez les dépendances JavaScript si nécessaire (si vous utilisez des outils front-end comme npm ou Yarn) :
+
+npm install
