@@ -1,68 +1,68 @@
 /**
- * ChatUI class handles the user interface for displaying chat messages and interacting with the input field.
+ * La classe ChatUI gère l'interface utilisateur pour afficher les messages de chat et interagir avec le champ de saisie.
  */
 export class ChatUI {
     /**
-     * Initializes the ChatUI by selecting DOM elements for message display and user input.
+     * Initialise ChatUI en sélectionnant les éléments DOM pour l'affichage des messages et la saisie utilisateur.
      */
     constructor() {
-        // Element where chat messages will be displayed
+        // Élément où les messages de chat seront affichés
         this.messagesContainer = document.getElementById('chat-messages');
 
-        // Input field where the user types their message
+        // Champ de saisie où l'utilisateur tape son message
         this.userInput = document.getElementById('user-input');
     }
 
     /**
-     * Adds a new message to the chat interface.
+     * Ajoute un nouveau message à l'interface de chat.
      * 
-     * @param {string} message - The message content to display.
-     * @param {string} sender - The sender type, either 'user' or 'bot'.
+     * @param {string} message - Le contenu du message à afficher.
+     * @param {string} sender - Le type d'expéditeur, soit 'user' (utilisateur) soit 'bot'.
      */
     addMessage(message, sender) {
-        // Create a new message element
+        // Crée un nouvel élément de message
         const messageElement = document.createElement('div');
 
-        // Add message and sender-specific classes
+        // Ajoute des classes spécifiques au message et à l'expéditeur
         messageElement.classList.add('message', `${sender}-message`);
 
-        // Set the text content of the message element
+        // Définit le contenu texte de l'élément de message
         messageElement.textContent = message;
 
-        // Append the message element to the messages container
+        // Ajoute l'élément de message au conteneur de messages
         this.messagesContainer.appendChild(messageElement);
 
-        // Scroll to the bottom of the messages container
+        // Défiler vers le bas du conteneur de messages
         this.scrollToBottom();
     }
 
     /**
-     * Retrieves and trims the user input from the input field.
+     * Récupère et nettoie la saisie utilisateur du champ de saisie.
      * 
-     * @returns {string} - The trimmed user input.
+     * @returns {string} - La saisie utilisateur nettoyée (sans espaces inutiles).
      */
     getUserInput() {
         return this.userInput.value.trim();
     }
 
     /**
-     * Clears the user input field.
+     * Efface le champ de saisie utilisateur.
      */
     clearInput() {
         this.userInput.value = '';
     }
 
     /**
-     * Clears all chat messages from the chat interface.
+     * Efface tous les messages de l'interface de chat.
      */
     clearMessages() {
         this.messagesContainer.innerHTML = '';
     }
 
     /**
-     * Scrolls the chat messages container to the bottom to ensure the latest message is visible.
+     * Défiler le conteneur des messages de chat vers le bas pour s'assurer que le dernier message est visible.
      */
     scrollToBottom() {
         this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
     }
-}
+    }
