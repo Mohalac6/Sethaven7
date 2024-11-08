@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,36 +17,36 @@
                 <h1>Sethaven7</h1>
                 <button id="new-chat" class="btn btn-primary">
                     <i data-lucide="plus"></i>
-                    New Chat
+                    Nouveau Chat
                 </button>
             </div>
             <nav class="chat-history">
-                <!-- Chat history will be dynamically populated here -->
+                <!-- L'historique des chats sera chargé dynamiquement ici -->
             </nav>
             <div class="sidebar-footer">
                 <button id="clear-history" class="btn btn-secondary">
                     <i data-lucide="trash-2"></i>
-                    Clear History
+                    Effacer l'Historique
                 </button>
             </div>
         </aside>
         <div class="main-content">
             <header class="mobile-header">
-                <button id="toggle-sidebar" class="btn btn-icon" aria-label="Toggle Sidebar">
+                <button id="toggle-sidebar" class="btn btn-icon" aria-label="Basculer la barre latérale">
                     <i data-lucide="menu"></i>
                 </button>
                 <h1>Sethaven7</h1>
             </header>
             <main class="chat-container">
                 <div class="chat-messages scrollable-content" id="chat-messages">
-                    <!-- Chat messages will be dynamically populated here -->
+                    <!-- Les messages du chat seront chargés dynamiquement ici -->
                 </div>
                 <div class="chat-input-container">
                     <form id="chat-form">
-                        <input type="text" id="user-input" placeholder="Type your message here..." autocomplete="off">
+                        <input type="text" id="user-input" placeholder="Tapez votre message ici..." autocomplete="off">
                         <button type="submit" class="btn btn-primary">
                             <i data-lucide="send"></i>
-                            Send
+                            Envoyer
                         </button>
                     </form>
                 </div>
@@ -55,4 +55,4 @@
     </div>
     <script src="{{ url_for('static', filename='js/app.js') }}" type="module"></script>
 </body>
-</html>
+    </html>
