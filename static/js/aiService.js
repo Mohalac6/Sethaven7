@@ -1,29 +1,29 @@
 /**
- * AIService class responsible for fetching responses from the backend API.
- * This class uses asynchronous API calls to communicate with the server and
- * fetch chatbot responses based on user input.
+ * Classe AIService responsable de récupérer les réponses de l'API backend.
+ * Cette classe utilise des appels API asynchrones pour communiquer avec le serveur
+ * et obtenir des réponses du chatbot en fonction des messages de l'utilisateur.
  */
 export class AIService {
     /**
-     * Fetches a chatbot response from the backend API.
+     * Récupère une réponse du chatbot à partir de l'API backend.
      *
-     * @param {string} userInput - The input message from the user.
-     * @returns {Promise<string>} - A promise that resolves to the chatbot's response.
-     * @throws {Error} - Throws an error if the network request fails.
+     * @param {string} userInput - Le message de l'utilisateur.
+     * @returns {Promise<string>} - Une promesse qui se résout avec la réponse du chatbot.
+     * @throws {Error} - Lance une erreur si la requête réseau échoue.
      */
     async getBotResponse(userInput) {
         try {
-            // Validate the user input to ensure it is not empty
+            // Valide l'entrée utilisateur pour s'assurer qu'elle n'est pas vide
             if (!userInput.trim()) {
-                throw new Error("User input cannot be empty.");
+                throw new Error("Le message de l'utilisateur ne peut pas être vide.");
             }
 
-            // Prepare the request payload
+            // Prépare les données de la requête
             const payload = {
                 messages: [{ role: 'user', content: userInput }]
             };
 
-            // Send a POST request to the backend API
+            // Envoie une requête POST à l'API backend
             const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: {
@@ -32,24 +32,24 @@ export class AIService {
                 body: JSON.stringify(payload),
             });
 
-            // Check if the response status indicates a successful request
+            // Vérifie si le statut de la réponse indique une requête réussie
             if (!response.ok) {
-                throw new Error(`Network error: ${response.statusText} (Status code: ${response.status})`);
+                throw new Error(`Erreur réseau : ${response.statusText} (Code de statut : ${response.status})`);
             }
 
-            // Parse and return the JSON response
+            // Analyse et renvoie la réponse JSON
             const data = await response.json();
             if (!data.message) {
-                throw new Error("Unexpected API response format: 'message' field is missing.");
+                throw new Error("Format inattendu de la réponse API : le champ 'message' est manquant.");
             }
 
             return data.message;
         } catch (error) {
-            // Log the error to the console for debugging purposes
-            console.error('Error fetching bot response:', error);
+            // Affiche l'erreur dans la console pour faciliter le débogage
+            console.error('Erreur lors de la récupération de la réponse du bot :', error);
 
-            // Rethrow the error to handle it in the calling code
+            // Relance l'erreur pour la gérer dans le code appelant
             throw error;
         }
     }
-}
+                }
