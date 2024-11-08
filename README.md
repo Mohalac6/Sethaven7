@@ -117,7 +117,7 @@ Ensuite, lancez l'application en mode débogage :
 
 ## Licence
 
-Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE.md) pour plus de détails.
+Ce projet est sous licence MIT - voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
 ## Remarques
 
