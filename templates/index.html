@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sethaven7</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <div class="app-container">
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1>Sethaven7</h1>
+                <button id="new-chat" class="btn btn-primary">
+                    <i data-lucide="plus"></i>
+                    New Chat
+                </button>
+            </div>
+            <nav class="chat-history">
+                <!-- Chat history will be dynamically populated here -->
+            </nav>
+            <div class="sidebar-footer">
+                <button id="clear-history" class="btn btn-secondary">
+                    <i data-lucide="trash-2"></i>
+                    Clear History
+                </button>
+            </div>
+        </aside>
+        <div class="main-content">
+            <header class="mobile-header">
+                <button id="toggle-sidebar" class="btn btn-icon" aria-label="Toggle Sidebar">
+                    <i data-lucide="menu"></i>
+                </button>
+                <h1>Sethaven7</h1>
+            </header>
+            <main class="chat-container">
+                <div class="chat-messages scrollable-content" id="chat-messages">
+                    <!-- Chat messages will be dynamically populated here -->
+                </div>
+                <div class="chat-input-container">
+                    <form id="chat-form">
+                        <input type="text" id="user-input" placeholder="Type your message here..." autocomplete="off">
+                        <button type="submit" class="btn btn-primary">
+                            <i data-lucide="send"></i>
+                            Send
+                        </button>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/app.js') }}" type="module"></script>
+</body>
+</html>
